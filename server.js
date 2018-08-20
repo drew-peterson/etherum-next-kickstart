@@ -7,7 +7,11 @@ const app = next({
 const handler = routes.getRequestHandler(app);
 
 app.prepare().then(() => {
-  express()
+  const server = express();
+  server
+    .post('/drew', (req, res) => {
+      res.send({ message: 'My name is drew' });
+    })
     .use(handler)
     .listen(3000);
 });

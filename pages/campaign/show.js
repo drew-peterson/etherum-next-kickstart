@@ -66,7 +66,7 @@ class CampaignShow extends Component {
       }
     ];
 
-    return <Card.Group items={items} />;
+    return <Card.Group items={items} stackable />;
   }
 
   render() {
@@ -74,11 +74,25 @@ class CampaignShow extends Component {
     return (
       <Layout>
         <h3>Campaign Details</h3>
+
         <Grid>
-          <Grid.Row>
-            <Grid.Column width={10}>{this.renderCards()}</Grid.Column>
-            <Grid.Column width={6}>
-              <ContributeForm address={this.props.address} />
+          <Grid.Row reversed="computer">
+            <Grid.Column mobile={16} computer={6}>
+              <div>
+                <ContributeForm address={this.props.address} />
+                <style jsx>
+                  {`
+                    @media (max-width: 425px) {
+                      div {
+                        margin-bottom: 30px;
+                      }
+                    }
+                  `}
+                </style>
+              </div>
+            </Grid.Column>
+            <Grid.Column mobile={16} computer={10}>
+              {this.renderCards()}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

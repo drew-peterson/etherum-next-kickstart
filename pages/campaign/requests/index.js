@@ -19,16 +19,19 @@ class RequestIndex extends Component {
         .fill() // create a new array and fill it but requesetCount # undefined
         .map((_, index) => campaign.methods.requests(index).call())
     );
-    return { address, requests, approversCount };
+    return { address, requests, approversCount, requestCount };
   }
   render() {
-    const { requests, approversCount, address } = this.props;
+    const { requests, approversCount, address, requestCount } = this.props;
     return (
       <Layout>
         <h3>Requests</h3>
         <Link route={`/campaign/${this.props.address}/requests/new`}>
           <a href="">
-            <Button primary> Add Request</Button>
+            <Button primary floated="right" style={{ marginBottom: 10 }}>
+              {' '}
+              Add Request
+            </Button>
           </a>
         </Link>
         <RequestsTable
@@ -36,6 +39,7 @@ class RequestIndex extends Component {
           approversCount={approversCount}
           address={address}
         />
+        <div>Found {requestCount} requests.</div>
       </Layout>
     );
   }
