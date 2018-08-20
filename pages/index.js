@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Grid } from 'semantic-ui-react';
 import factory from '../ethereum/factory';
 import Layout from '../components/Layout';
 import { Link } from '../routes';
@@ -20,27 +20,29 @@ class CampaignIndex extends Component {
           <a>View Campaign</a>
         </Link>
       ),
-      fluid: true //spacing
+      fluid: true // fill parent width
     }));
 
     return <Card.Group items={items} />;
   }
 
   render() {
+    const { Row, Column } = Grid;
     return (
       <Layout>
         <h3>Open Campaigns</h3>
-        <Link route="/campaign/new">
-          <a>
-            <Button
-              floated="right"
-              content="Create Campaign"
-              icon="add circle"
-              primary
-            />
-          </a>
-        </Link>
-        {this.renderCampaigns()}
+        <Grid columns="equal" stackable>
+          <Row textAlign="justified" reversed="tablet computer">
+            <Column>
+              <Link route="/campaign/new">
+                <a>
+                  <Button content="Create Campaign" icon="add circle" primary />
+                </a>
+              </Link>
+            </Column>
+            <Column>{this.renderCampaigns()}</Column>
+          </Row>
+        </Grid>
       </Layout>
     );
   }

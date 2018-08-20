@@ -24,16 +24,18 @@ class Drew extends Component {
       <Layout>
         <Grid>
           <Row>
-            <Link route="/">
-              <a href="">Back</a>
-            </Link>
+            <Column width={16}>
+              <Link route="/">
+                <a href="">Back</a>
+              </Link>
+            </Column>
           </Row>
           <Row>
-            <Column>
+            <Column width={6}>
               <Button content="Get Secret Message [POST]" onClick={this.drew} />
             </Column>
-            <Column>
-              <h1>secret message is: {this.state.message}</h1>
+            <Column width={10}>
+              <h3>secret message is: {this.state.message}</h3>
             </Column>
           </Row>
         </Grid>
