@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Grid } from 'semantic-ui-react';
 import axios from 'axios';
 import Layout from '../components/Layout';
 import { Link } from '../routes';
@@ -19,13 +19,24 @@ class Drew extends Component {
   };
 
   render() {
+    const { Column, Row } = Grid;
     return (
       <Layout>
-        <Link route="/">
-          <a href="">Back</a>
-        </Link>
-        <Button content="Get Secret Message [POST]" onClick={this.drew} />
-        <h1>secret message is: {this.state.message}</h1>
+        <Grid>
+          <Row>
+            <Link route="/">
+              <a href="">Back</a>
+            </Link>
+          </Row>
+          <Row>
+            <Column>
+              <Button content="Get Secret Message [POST]" onClick={this.drew} />
+            </Column>
+            <Column>
+              <h1>secret message is: {this.state.message}</h1>
+            </Column>
+          </Row>
+        </Grid>
       </Layout>
     );
   }
